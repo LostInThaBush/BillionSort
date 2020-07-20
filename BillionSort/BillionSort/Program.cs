@@ -1,6 +1,6 @@
-﻿using BillionSort.Models;
+﻿using BillionSort.Accounts;
 using System;
-
+using BillionSort.Logs;
 namespace BillionSort
 {
     class Program
@@ -8,14 +8,8 @@ namespace BillionSort
         static void Main(string[] args)
         {
             DbMethods dbMethods = new DbMethods("Accounts");
-
-            dbMethods.AddAccount("RARA.Hacha@gmail.com", "Booze");
-            for (int i =0; i<2; i++)
-            {
-                Console.WriteLine("Enter SQL Command: ");
-                var command = Console.ReadLine();
-                dbMethods.CustomSQLCommand(command);
-            }
+            Log log = new Log();
+            log.CheckLog();
             Console.ReadLine();
         }
     }

@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace BillionSort.Models
+namespace BillionSort.Accounts
 {
     public class DbMethods
     {
