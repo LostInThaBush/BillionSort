@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillionSort", "BillionSort\BillionSort.csproj", "{C9CED333-04DE-4E0E-8E0F-14031EEFAA98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9CED333-04DE-4E0E-8E0F-14031EEFAA98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9CED333-04DE-4E0E-8E0F-14031EEFAA98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9CED333-04DE-4E0E-8E0F-14031EEFAA98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9CED333-04DE-4E0E-8E0F-14031EEFAA98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {762561CC-BD8E-4044-8703-FC26DB19F7FE}
+	EndGlobalSection
+EndGlobal
