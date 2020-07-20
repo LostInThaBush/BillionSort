@@ -9,8 +9,16 @@ namespace BillionSort.Models
     public class AccountsContext : DbContext
     {
         DbSet<Account> Accounts { get; set; }
+        public AccountsContext(DbContextOptions<AccountsContext> options) : base(options)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AccountsContext>();
+            optionsBuilder.UseSqlServer("Data Source=INLL9DL-LT\\MSSQLSERVER01;Initial Catalog=Accounts;Integrated Security=True");
+            var context = new AccountsContext(optionsBuilder.Options);
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlServer("Data Source=INLL9DL-LT\\MSSQLSERVER01;Initial Catalog=Accounts;Integrated Security=True");
+        //public async void
+        
     }
     public class Account
     {
@@ -25,5 +33,6 @@ namespace BillionSort.Models
         public string CustomData05 { get; set; }
 
     }
+
 
 }

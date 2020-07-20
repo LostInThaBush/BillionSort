@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BillionSort.Models;
+using System;
 
 namespace BillionSort
 {
@@ -6,7 +7,7 @@ namespace BillionSort
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }

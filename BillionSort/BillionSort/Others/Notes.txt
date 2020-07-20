@@ -1,1 +1,8 @@
-﻿GUID = Global Unique Identifier
+﻿GUID = Global Unique Identifier, Example: "11223344-5566-7788-99AA-BBCCDDEEFF00" 
+var - variable without explicitely given type 
+Questionmarka after variable (example: "int? age") - Means, that it is boxed integer value. Can be null! Example: 
+			int i = 1 - OK 
+			int i = null - Not OK
+			int i? = 1 - OK 
+			int i? = null - Also OK! 
+	Make variable, which value usually can not be "null", nullable. 
