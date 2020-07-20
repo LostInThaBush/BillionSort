@@ -37,6 +37,22 @@ namespace BillionSort.Models
                 var rEmail = accountsContext.Accounts.FirstOrDefault(y => y.Email == email);
                 accountsContext.Remove(rEmail);
             }
+            accountsContext.SaveChanges();
+        }
+        public void ClearTable()
+        {
+
+            accountsContext.Database.ExecuteSqlRaw("DELETE FROM Accounts");
+            accountsContext.SaveChanges();
+        }
+        /// <summary>
+        /// Enter SQL command as param. Example "INSERT INTO Accounts (Email, Password, CustomData) VALUES ('VeryWell@umpalumpa.com', 'SomeSorros', 'FirstCustom data')"
+        /// </summary>
+        /// <param name="command"></param>
+        public void CustomSQLCommand(string command)
+        {
+            accountsContext.Database.ExecuteSqlRaw(command);
+            accountsContext.SaveChanges();
         }
         
     }
