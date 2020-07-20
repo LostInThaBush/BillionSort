@@ -1,0 +1,1 @@
+﻿GUID = Global Unique Identifier
