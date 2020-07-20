@@ -6,3 +6,20 @@ Questionmarka after variable (example: "int? age") - Means, that it is boxed int
 			int i? = 1 - OK 
 			int i? = null - Also OK! 
 	Make variable, which value usually can not be "null", nullable. 
+
+Asynchronous methods - Make me availiable to start an task and then pay attention to another task, which needs it at the moment. You can handle multiple tasks. == starts next task, before first one is completed -> Multiple threads
+			IPORTANT: If any portion of an operation is asynchronous, than entire operation is ASYNCHRONOUS! 
+			Task or Task<TResult> - Object made up to hold running tasks. Await each task before using its result 
+			-----------------------------------------------------------------------------------------------------
+			Example of an asynchronous method: 
+					static async Task<Toast> MakeToastWithButterAndJamAsync(int number)
+						{
+							var toast = await ToastBreadAsync(number);
+							ApplyButter(toast);
+							ApplyJam(toast);
+
+							return toast;
+						}
+			--------------------------------------------------------------------------------------------------------
+			For multiple awaits, you can use "await Task.WhenAll(eggsTask, baconTask, toastTask);", to make it even better. 
+
