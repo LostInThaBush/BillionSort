@@ -11,14 +11,13 @@ namespace BillionSort
         {
             DbMethods dbMethods = new DbMethods("Accounts");
             Log log = new Log();
-            log.CheckLog();
-            for (int i = 0; i<20; i++)
+            string fileName;
+            for (int i=1; i < 111; i++)
             {
-                string actualLine = "Line"+i;
-                log.WriteLine(actualLine);
+                fileName = i.ToString();
+                ImportTXT importTXT = new ImportTXT(@"C:\Users\fcermak\Downloads\Exploit.in\" + fileName + ".txt");
             }
-            ImportTXT importTXT = new ImportTXT(@"C:\Users\fcermak\source\repos\BillionSort\BillionSort\BillionSort\Others\SampleData.txt");
-            importTXT.LineByLine();
+      
             
             Console.ReadLine();
         }

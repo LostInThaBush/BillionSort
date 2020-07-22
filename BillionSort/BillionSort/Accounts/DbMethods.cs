@@ -20,9 +20,9 @@ namespace BillionSort.Accounts
             accountsContext = new AccountsContext();
         }
            
-        public void AddAccount(string email, string password)
+        public void AddAccount(Account account)
         {
-            accountsContext.Add(new Account {Email = email, Password = password });
+            accountsContext.Add(account);
             accountsContext.SaveChanges();
         }
         public void RemoveAccount(string email, int? UID)
