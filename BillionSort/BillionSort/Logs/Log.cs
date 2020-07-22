@@ -34,12 +34,13 @@ namespace BillionSort.Logs
         }
         public void WriteLine(string line)
         {
+            
             string filePath = System.IO.Path.Combine(folderPath, Buzzer.stellarDate());
             CheckLog();
             using (System.IO.StreamWriter file =
            new System.IO.StreamWriter(filePath, true))
             {
-                file.WriteLine(line);
+                file.WriteLine(Buzzer.now+" "+line);
             }
 
         }
