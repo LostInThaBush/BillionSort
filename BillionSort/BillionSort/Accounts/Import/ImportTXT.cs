@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
@@ -15,9 +16,10 @@ namespace BillionSort.Accounts.Import
         Log log = new Log();
         public List<String> Line = new List<string>();
         public string filePath { get; set; }
-        Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+        Int32 unixTimestamp { get; set; }
         public ImportTXT(string filePath)
         {
+            unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             log.WriteLine("Import data from TxT to DB started " + unixTimestamp.ToString());
             this.filePath = filePath;
             LineByLine();
@@ -28,14 +30,14 @@ namespace BillionSort.Accounts.Import
         /// </summary>
         public void LineByLine()
         {
+            long lineInd = 0;
+            long nextCheck = 100000; 
             int nullLines = 0;
             string line;
             System.IO.StreamReader file =
             new System.IO.StreamReader(filePath);
             while ((line = file.ReadLine()) != null)
-            {
-                if (nullLines < 2)
-                {
+            {     
                     if (line != null)
                     {
                         string name = line.Substring(0, line.IndexOf('@'));
@@ -43,18 +45,27 @@ namespace BillionSort.Accounts.Import
                         string typeOfMail = line.Substring(line.IndexOf('@'), (line.IndexOf(':') - line.IndexOf('@')));
                         string password = line.Substring(line.IndexOf(':') + 1);
                         dbMethods.AddAccount(new Account { Email = email, Password = password, CustomData = typeOfMail, CustomData02 = name });
+                        lineInd++;
                     }
                     else
                     {
                         log.WriteLine("Null line");
                         nullLines++;
+                        lineInd++;
                     }
+                    if (lineInd == nextCheck)
+                    {
+                       Int32 unixTimestampNextChech = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                    log.WriteLine("Prenesono " + lineInd + "radku v čase: " + (unixTimestampNextChech - unixTimestamp).ToString());
+                    nextCheck = nextCheck + 100000;
+
+                    
 
                 }
 
             }
             file.Close();
-            log.WriteLine("Import from file to DB complete");
+            log.WriteLine("Import from file to DB complete " + unixTimestamp.ToString());
         }
         /// <summary>
         /// Zapíše importované údaje do databáze
